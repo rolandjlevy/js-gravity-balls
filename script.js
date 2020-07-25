@@ -25,12 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
     balls.push(new Ball(canvas, 20, randomHex(), e.clientX, e.clientY));
   });
 
-  setInterval(() => {
+  function gameLoop() {
     clearCanvas();
     balls.forEach(ball => {
       ball.draw(ctx);
       ball.movement(canvas);
     });
-  }, 25);
+    requestAnimationFrame(gameLoop);
+  }
+
+  requestAnimationFrame(gameLoop);
 
 })
