@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let balls = [];
   let counter = 0;
-  while (counter < 20) {
+  while (counter++ < 20) {
     balls.push(new Ball(
       canvas, 
       20, 
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas.width / 2, 
       canvas.height / 2)
     );
-    counter++;
   }
 
   canvas.addEventListener('click', (e) => {
