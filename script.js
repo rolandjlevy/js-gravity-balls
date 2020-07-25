@@ -64,16 +64,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return `#${hex}`;
   }
-
-  const x = canvas.width / 2;
-  const y = canvas.height / 2;
-  let balls = [
-    new Ball(canvas, 20, 'red', x, y),
-    new Ball(canvas, 20, 'blue', x, y),
-    new Ball(canvas, 20, 'green', x, y),
-    new Ball(canvas, 20, 'purple', x, y),
-    new Ball(canvas, 20, 'orange', x, y)
-  ];
+  
+  let balls = [];
+  let counter = 0;
+  while (counter < 20) {
+    balls.push(new Ball(
+      canvas, 
+      20, 
+      randomHex(), 
+      canvas.width / 2, 
+      canvas.height / 2)
+    );
+    counter++;
+  }
 
   canvas.addEventListener('click', (e) => {
     balls.push(new Ball(canvas, 20, randomHex(), e.clientX, e.clientY));
@@ -85,6 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ball.draw(ctx);
       ball.movement(canvas);
     });
-  }, 20);
+  }, 25);
 
 })
