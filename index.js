@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
-  
+
   let balls = [];
   let counter = 0;
   while (counter++ < 20) {
@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   canvas.addEventListener('click', (e) => {
-    balls.push(new Ball(canvas, 20, randomHex(), e.clientX, e.clientY));
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    balls.push(new Ball(canvas, 20, randomHex(), x, y));
   });
 
   function gameLoop() {
