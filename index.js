@@ -21,12 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  canvas.addEventListener('click', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    balls.push(new Ball(canvas, 20, randomHex(), x, y));
-  });
+  ['mousedown', 'touchstart'].forEach(event => {
+    canvas.addEventListener(event, (e) => {
+      const rect = e.target.getBoundingClientRect();
+      const eventType = e.touches ? e.touches[0] : e;
+      const mouseX = eventType.clientX - rect.left;
+      const mouseY = eventType.clientY - rect.top;
+      // const rect = canvas.getBoundingClientRect();
+      // const x = e.clientX - rect.left;
+      // const y = e.clientY - rect.top;
+      balls.push(new Ball(canvas, 20, randomHex(), mouseX, mouseY));
+    });
+  })
 
   function gameLoop() {
     clearCanvas();
