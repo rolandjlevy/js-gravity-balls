@@ -1,5 +1,5 @@
 class Ball {
-  constructor(canvas, radius, color, x, y) {
+  constructor(radius, color, x, y) {
     this.x = x,
     this.y = y,
     this.radius = radius;

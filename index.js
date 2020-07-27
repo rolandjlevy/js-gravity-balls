@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  new Input(canvas, balls);
+  const events = new Input(canvas);
 
   function gameLoop() {
     clearCanvas();
@@ -29,9 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ball.draw(ctx);
       ball.movement(canvas);
     });
+    events.press(balls);
     requestAnimationFrame(gameLoop);
   }
 
   requestAnimationFrame(gameLoop);
 
-})
+});
