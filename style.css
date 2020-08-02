@@ -5,6 +5,8 @@ body {
 canvas#game-area {
   border: 5px solid #aaa;
   background-color: #fff;
+  opacity: 0;
+  transition: all 0.5s ease;
 }
 
 .container {
