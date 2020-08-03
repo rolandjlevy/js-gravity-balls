@@ -9,20 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
-
-  let balls = [];
-  let counter = 0;
-  while (counter++ < 20) {
-    balls.push(new Ball(
-      canvas, 
-      20, 
-      randomHex(), 
-      canvas.width / 2, 
-      canvas.height / 2)
-    );
-  }
+  
+  const count = document.querySelector('.count');
 
   const events = new Input(canvas);
+
+  const balls = [];
 
   function gameLoop() {
     clearCanvas();
@@ -31,9 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
       ball.movement(canvas);
     });
     events.press(balls);
+    count.innerHTML = balls.length;
     requestAnimationFrame(gameLoop);
   }
 
   requestAnimationFrame(gameLoop);
+
 
 });

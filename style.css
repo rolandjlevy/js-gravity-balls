@@ -1,5 +1,7 @@
 body {
   background-color: #333;
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
 }
 
 canvas#game-area {
@@ -9,10 +11,19 @@ canvas#game-area {
   transition: all 0.5s ease;
 }
 
+h3 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+}
+
+.display {
+  margin: 10px 0;
 }
