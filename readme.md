@@ -1,5 +1,7 @@
 # Gravity balls
 
+Click and hold to see a stream of balls that bounce with gravity. Using JavaScript with canvas.
+
 ### Links
 
 + [Live demo](https://js-gravity-balls--rjlevy.repl.co/)
