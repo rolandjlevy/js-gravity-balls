@@ -9,6 +9,7 @@ class Ball {
     this.xFriction = 0.2;
     this.velocityX = (Math.random() * 10) - 5;
     this.velocityY = (Math.random() * 5) - 10;
+    this.counter = 0;
   }
   draw(ctx) {
     ctx.beginPath();
