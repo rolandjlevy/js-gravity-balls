@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.style.opacity = 1;
   const ctx = canvas.getContext('2d');
 
+  const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
   function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }

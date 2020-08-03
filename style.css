@@ -24,6 +24,21 @@ h3 {
   height: 100vh;
 }
 
-.display {
+.m-tb-10, .m-bt-10 {
   margin: 10px 0;
+}
+
+.squash-ball {
+  animation-name: squash;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes squash {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(1.2);
+  }
 }

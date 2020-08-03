@@ -32,12 +32,11 @@ class Ball {
     if (this.y + this.radius > canvas.height) { 
       // Re-positioning on the base
       this.y = canvas.height - this.radius;
-      //bounce the ball
+      // bounce the ball
       this.velocityY *= -this.bounce;
-      //do this otherwise, ball never stops bouncing
+      // do this otherwise, ball never stops bouncing
       if (this.velocityY < 0 && this.velocityY > -2.3) this.velocityY = 0;
-      // if (this.velocityY != 0) console.log({vy: this.velocityY})
-      //do this otherwise ball never stops on xaxis
+      // do this otherwise ball never stops on xaxis
       if (Math.abs(this.velocityX) < 0.5) this.velocityX = 0;
       if (this.velocityX > 0) this.velocityX = this.velocityX - this.xFriction;
       if (this.velocityX < 0) this.velocityX = this.velocityX + this.xFriction;
