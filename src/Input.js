@@ -1,18 +1,14 @@
-class Input {
+export class Input {
   constructor(canvas) {
-    this.maxRadius = 20;
-    ['mousedown', 'touchstart'].forEach(event => {
-      canvas.addEventListener(event, (e) => {
-        this.pressing = true;
-        this.e = e;
-      });
+    const mouse = this.getEventTypes();
+    canvas.addEventListener(mouse.down, (e) => {
+      this.pressing = true;
+      this.e = e;
     });
-    ['mouseup', 'touchend'].forEach(event => {
-      canvas.addEventListener(event, (e) => {
-        this.pressing = false;
-      });
+    canvas.addEventListener(mouse.up, (e) => {
+      this.pressing = false;
     });
-    ['mousedown', 'mousemove', 'touchstart', 'touchmove'].forEach(event => {
+    [mouse.down, mouse.move].forEach(event => {
       canvas.addEventListener(event, (e) => {
         if (this.pressing) {
           this.e = e;
@@ -20,14 +16,27 @@ class Input {
       });
     });
   }
-  press(balls) {
+  getEventTypes() {
+    const docElem = document.documentElement;
+    return {
+      down: 'ontouchstart' in docElem ? 'touchstart' : 'mousedown',
+      up: 'ontouchend' in docElem ? 'touchend' : 'mouseup',
+      move: 'ontouchmove' in docElem ? 'touchmove' : 'mousemove'
+    }
+  }
+  press({ctx, Ball, balls, maxRadius}) {
     if (this.pressing && this.e) {
       const rect = this.e.target.getBoundingClientRect();
       const eventType = this.e.touches ? this.e.touches[0] : this.e;
-      const mouseX = eventType.clientX - rect.left;
-      const mouseY = eventType.clientY - rect.top;
-      const radius = randomNum(this.maxRadius);
-      balls.push(new Ball(radius, randomHex(), mouseX, mouseY));
+      const ball = new Ball({
+        ctx,
+        radius:randomNum(maxRadius), 
+        colour:randomHex(), 
+        x:eventType.clientX - rect.left, 
+        y:eventType.clientY - rect.top,
+        id:new Date().getTime()
+      });
+      balls.push(ball);
     }
   }
 }

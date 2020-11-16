@@ -3,3 +3,7 @@
 
 ### Ideas
 + Mousedown event capture [from developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event) 
+
+### Links
+
+- Fade script: https://repl.it/@RolandJLevy/js-fade-with-promise

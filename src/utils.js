@@ -9,7 +9,7 @@ const hexChars = () => {
   return arr;
 }
 
-const randomNum = n => Math.round( Math.random() * n);
+const randomNum = n => Math.round(Math.random() * n);
 
 const randomHex = () => {
   let hex = '';
@@ -19,3 +19,5 @@ const randomHex = () => {
   }
   return `#${hex}`;
 }
+
+const $ = (selector) => document.querySelector(selector);
