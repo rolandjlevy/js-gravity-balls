@@ -25,7 +25,7 @@ function gameLoop() {
   });
   balls = balls.filter(item => item.alive);
   events.press({ctx, Ball, balls, maxRadius:20});
-  $('.count').innerHTML = balls.length;
+  // $('.count').innerHTML = `ball count: ${balls.length}`;
   requestAnimationFrame(gameLoop);
 }
 

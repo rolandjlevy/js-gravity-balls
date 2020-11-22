@@ -12,6 +12,7 @@ export class Ball {
     this.velocityX = (Math.random() * 10) - 5;
     this.velocityY = (Math.random() * 5) - 10;
     this.alive = true;
+    this.alive = true;
     this.ctx.globalAlpha = 0.7;
   }
   draw() {
@@ -25,29 +26,31 @@ export class Ball {
     return new Promise(resolve => setTimeout(resolve, t));
   }
   fade(){
-    let opacity = 0.7;
+    // let opacity = 0.7;
+    let counter = 0.7;
     return new Promise((resolve, reject) => {
       const timer = setInterval(() => {
-        if (opacity > 0) {
-          this.ctx.globalAlpha = opacity >= 0 ? opacity : 0;
-          opacity -= 0.005;
+        if (counter > 0) {
+          // this.ctx.globalAlpha = counter >= 0 ? counter : 0;
+          counter -= 0.005;
+          if (this.radius) this.radius--;
         } 
-        if (opacity < 0.005) {
+        if (counter < 0.005) {
           this.alive = false;
           clearInterval(timer);
-          console.log({opacity}, this.alive)
           resolve();
         }
-      }, 1);
+      }, 10);
     });
   }
   async movement(canvas) {
-    if (!this.alive) {
+    if (this.alive) {
+      this.x += this.velocityX;
+      this.y += this.velocityY;
+      this.velocityY += this.gravity;
+    } else {
       return;
     }
-    this.x += this.velocityX;
-    this.y += this.velocityY;
-    this.velocityY += this.gravity;
 
     // change x direction when ball hits wall
     if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
@@ -70,10 +73,8 @@ export class Ball {
       if (Math.abs(this.velocityY) <= 0.5) {
         this.velocityY = 0;
       }
-      if (this.alive && Math.abs(this.velocityX) <= 0.005 && Math.abs(this.velocityY) <= 0.005) {
-        // do fade here
-        // await this.fade();
-        this.alive = false;
+      if (!Math.abs(this.velocityX) && !Math.abs(this.velocityY)) {
+        await this.fade();
       }
       if (this.velocityX > 0) this.velocityX = this.velocityX - this.xFriction;
       if (this.velocityX < 0) this.velocityX = this.velocityX + this.xFriction;
