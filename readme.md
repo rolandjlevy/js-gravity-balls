@@ -1,6 +1,6 @@
 # ⚪ Gravity balls ⚪
 
-Just a bit of fun experimenting with canvas. Click and hold to see a stream of balls bouncing with gravity. Using JavaScript with canvas.
+A bit of fun experimenting with canvas. Click and hold to see a stream of balls bouncing with gravity.
 
 ### Links
 
