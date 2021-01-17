@@ -1,11 +1,16 @@
+:root {
+  --deepgreyblue: hsl(231, 25%, 15%);
+  --darkgreyblue: hsl(231, 15%, 30%);
+}
+
 body {
-  background-color: hsl(231, 25%, 15%);
+  background-color:black;
   font-family: 'Raleway', sans-serif;
 }
 
 canvas#game-area {
-  border: 0px solid hsl(231, 15%, 30%);
-  background-color: hsl(231, 25%, 10%);
+  border: 0px solid var(--darkgreyblue);
+  background-color: black;
   opacity: 0;
   transition: all 0.5s ease;
 }

@@ -12,7 +12,6 @@ export class Ball {
     this.velocityX = (Math.random() * 10) - 5;
     this.velocityY = (Math.random() * 5) - 10;
     this.alive = true;
-    this.alive = true;
     this.ctx.globalAlpha = 0.7;
   }
   draw() {
@@ -21,6 +20,10 @@ export class Ball {
     this.ctx.fillStyle = this.colour;
     this.ctx.fill();
     this.ctx.closePath();
+  }
+  drawSquare() {
+    this.ctx.fillStyle = this.colour;
+    this.ctx.fillRect(this.x, this.y, this.x + 40, this.y + 40);
   }
   delay(t){
     return new Promise(resolve => setTimeout(resolve, t));
