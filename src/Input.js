@@ -1,5 +1,6 @@
 export class Input {
-  constructor(canvas) {
+  constructor(canvas, utils) {
+    this.utils = utils;
     const mouse = this.getEventTypes();
     canvas.addEventListener(mouse.down, (e) => {
       this.pressing = true;
@@ -30,8 +31,8 @@ export class Input {
       const eventType = this.e.touches ? this.e.touches[0] : this.e;
       const ball = new Ball({
         ctx,
-        radius:randomNum(maxRadius), 
-        colour:randomHex(), 
+        radius:this.utils.randomNum(maxRadius), 
+        colour:this.utils.randomHex(), 
         x:eventType.clientX - rect.left, 
         y:eventType.clientY - rect.top,
         id:new Date().getTime()

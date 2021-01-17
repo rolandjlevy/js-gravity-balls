@@ -1,7 +1,11 @@
 import { Ball } from './src/Ball.js';
 import { Input } from './src/Input.js';
+import { Utils } from './src/Utils.js';
 
-const canvas = $('#game-area');
+
+const utils = new Utils();
+
+const canvas = utils.$('#game-area');
 canvas.width = 400;
 canvas.height = 300;
 canvas.style.opacity = 1;
@@ -13,7 +17,7 @@ function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-const events = new Input(canvas);
+const events = new Input(canvas, utils);
 
 let balls = [];
 
